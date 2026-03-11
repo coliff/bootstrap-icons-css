@@ -1,0 +1,23 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": [
+    "*.css",
+    "*.json"
+  ],
+  "words": [
+    "COMMITLINT",
+    "cooldown",
+    "Csvg",
+    "evenodd",
+    "fediverse",
+    "htmlhint",
+    "nvmrc",
+    "Oliff",
+    "Svgs",
+    "tagname",
+    "twbs",
+    "webfonts",
+    "ZIZMOR"
+  ]
+}

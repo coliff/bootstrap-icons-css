@@ -1,0 +1,37 @@
+{
+  "name": "bootstrap-icons-css",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CSS variables for Bootstrap Icons",
+  "homepage": "https://github.com/coliff/bootstrap-icons-css#readme",
+  "bugs": {
+    "url": "https://github.com/coliff/bootstrap-icons-css/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coliff/bootstrap-icons-css.git"
+  },
+  "license": "MIT",
+  "author": "Christian Oliff (https://christianoliff.com)",
+  "scripts": {
+    "build": "node build-css.mjs",
+    "lint": "npm run lint-html && npm run lint-css && npm run lint-js",
+    "lint-css": "npx stylelint \"**/*.css\" --fix",
+    "lint-html": "npx htmlhint **/*.html",
+    "lint-js": "npx eslint@8 **/*.mjs --fix",
+    "pa11y": "npx pa11y https://coliff.github.io/bootstrap-icons-css/",
+    "prettier": "npx prettier --write \"docs/**/*.{html,css,js}\"",
+    "serve": "npx serve docs",
+    "spellcheck": "npx cspell \"**/*.html\" --no-progress"
+  },
+  "devDependencies": {
+    "clean-css": "5.3.3",
+    "sharp": "0.33.5",
+    "svgo": "4.0.1",
+    "to-ico": "1.1.5",
+    "yauzl": "3.2.0"
+  },
+  "volta": {
+    "node": "22.22.0"
+  }
+}
