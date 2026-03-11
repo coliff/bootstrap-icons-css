@@ -77,6 +77,20 @@ h1 {
   font-size: 1.8rem;
 }
 
+.badges {
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+}
+
+.badges img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.badges a + a {
+  margin-left: 0.5rem;
+}
+
 h2 {
   font-size: 1.3rem;
 }
