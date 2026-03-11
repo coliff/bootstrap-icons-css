@@ -1,5 +1,4 @@
 {
-  "bracketSameLine": true,
   "overrides": [
     {
       "files": "*.svg",
