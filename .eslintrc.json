@@ -10,6 +10,17 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "overrides": [
+    {
+      "files": ["docs/script.js"],
+      "env": {
+        "browser": true
+      },
+      "globals": {
+        "Prism": "readonly"
+      }
+    }
+  ],
   "rules": {
     "curly": ["error", "all"],
     "dot-notation": "error",

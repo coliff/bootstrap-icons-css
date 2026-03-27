@@ -1,5 +1,7 @@
 (function () {
-  if (typeof Prism !== "undefined") Prism.highlightAll();
+  if (typeof Prism !== "undefined") {
+    Prism.highlightAll();
+  }
 })();
 
 (function () {
@@ -18,7 +20,7 @@
       div.className = "grid-item";
       div.title = "Click to copy class";
       const icon = document.createElement("i");
-      icon.className = "bi bi-" + name;
+      icon.className = `bi bi-${name}`;
       const label = document.createElement("span");
       label.textContent = name;
       div.appendChild(icon);
@@ -32,9 +34,9 @@
   function updateCount() {
     const q = searchInput.value.trim();
     if (q.length < 1) {
-      countEl.textContent = allNames.length + " icons. Type to filter.";
+      countEl.textContent = `${allNames.length} icons. Type to filter.`;
     } else {
-      countEl.textContent = filtered.length + " icons.";
+      countEl.textContent = `${filtered.length} icons.`;
     }
   }
 
@@ -73,11 +75,15 @@
 
   grid.addEventListener("click", (e) => {
     const item = e.target.closest(".grid-item");
-    if (!item) return;
+    if (!item) {
+      return;
+    }
     const label = item.querySelector("span:last-child");
     const name = label.textContent;
-    if (name === "Copied!") return;
-    const classNames = "bi bi-" + name;
+    if (name === "Copied!") {
+      return;
+    }
+    const classNames = `bi bi-${name}`;
     navigator.clipboard.writeText(classNames).then(
       () => {
         const original = name;
@@ -109,10 +115,12 @@
 })();
 
 (function () {
-  var toggle = document.getElementById("theme-toggle");
-  if (!toggle) return;
+  const toggle = document.getElementById("theme-toggle");
+  if (!toggle) {
+    return;
+  }
   function setLabel() {
-    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
     toggle.textContent = isDark ? "☀️" : "🌙";
     toggle.setAttribute(
       "aria-label",
@@ -120,19 +128,22 @@
     );
   }
   setLabel();
-  var prismDark = document.getElementById("prism-dark");
-  if (prismDark)
+  const prismDark = document.getElementById("prism-dark");
+  if (prismDark) {
     prismDark.media =
       document.documentElement.getAttribute("data-theme") === "dark"
         ? "all"
         : "none";
+  }
   toggle.addEventListener("click", function () {
-    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    var next = isDark ? "light" : "dark";
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    const next = isDark ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
-    var prismDark = document.getElementById("prism-dark");
-    if (prismDark) prismDark.media = next === "dark" ? "all" : "none";
+    const prismDarkClick = document.getElementById("prism-dark");
+    if (prismDarkClick) {
+      prismDarkClick.media = next === "dark" ? "all" : "none";
+    }
     setLabel();
   });
 })();

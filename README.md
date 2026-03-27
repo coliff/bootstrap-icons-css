@@ -1,7 +1,8 @@
 # Bootstrap Icons in CSS
 
 [![npm version](https://img.shields.io/npm/v/bootstrap-icons-css.svg)](https://www.npmjs.com/package/bootstrap-icons-css)
-[![LICENSE: MIT](https://img.shields.io/badge/license-MIT-lightgrey.svg)](LICENSE)
+[![npm downloads](https://img.shields.io/npm/dm/bootstrap-icons-css.svg)](https://www.npmjs.com/package/bootstrap-icons-css)
+[![LICENSE: MIT](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/coliff/bootstrap-icons-css/blob/main/LICENSE)
 
 A 100% pure CSS icon implementation of [Bootstrap Icons](https://icons.getbootstrap.com/) using CSS custom properties and SVG masks.
 
