@@ -40,7 +40,10 @@
 
   function applySearch() {
     const q = searchInput.value.trim().toLowerCase();
-    filtered = q.length >= 1 ? allNames.filter((n) => n.toLowerCase().includes(q)) : allNames;
+    filtered =
+      q.length >= 1
+        ? allNames.filter((n) => n.toLowerCase().includes(q))
+        : allNames;
     updateCount();
     render();
   }
@@ -83,7 +86,7 @@
           label.textContent = original;
         }, 1500);
       },
-      () => { }
+      () => {},
     );
   });
 
@@ -99,7 +102,8 @@
       syncUrlFromSearch();
     })
     .catch((e) => {
-      countEl.textContent = "Could not load icon list. Run npm run build first.";
+      countEl.textContent =
+        "Could not load icon list. Run npm run build first.";
       console.error(e);
     });
 })();
@@ -110,11 +114,18 @@
   function setLabel() {
     var isDark = document.documentElement.getAttribute("data-theme") === "dark";
     toggle.textContent = isDark ? "☀️" : "🌙";
-    toggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+    toggle.setAttribute(
+      "aria-label",
+      isDark ? "Switch to light mode" : "Switch to dark mode",
+    );
   }
   setLabel();
   var prismDark = document.getElementById("prism-dark");
-  if (prismDark) prismDark.media = document.documentElement.getAttribute("data-theme") === "dark" ? "all" : "none";
+  if (prismDark)
+    prismDark.media =
+      document.documentElement.getAttribute("data-theme") === "dark"
+        ? "all"
+        : "none";
   toggle.addEventListener("click", function () {
     var isDark = document.documentElement.getAttribute("data-theme") === "dark";
     var next = isDark ? "light" : "dark";

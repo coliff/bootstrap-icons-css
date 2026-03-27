@@ -1,94 +1,92 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Icons – CSS Variables</title>
+    <script>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var dark = stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../css/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-tomorrow.min.css" id="prism-dark" media="none" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bootstrap Icons – CSS Variables</title>
-  <script>
-    (function () {
-      var stored = localStorage.getItem("theme");
-      var dark = stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches);
-      document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
-    })();
-  </script>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="../css/bootstrap-icons.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-tomorrow.min.css"
-    id="prism-dark" media="none" />
+    <meta name="author" content="Christian Oliff" />
+    <meta name="description" content="Test page for Bootstrap Icons CSS variables" />
+    <meta name="fediverse:creator" content="@christianoliff@mastodon.social" />
+    <meta name="robots" content="index, follow" />
 
-  <meta name="author" content="Christian Oliff" />
-  <meta name="description" content="Test page for Bootstrap Icons CSS variables" />
-  <meta name="fediverse:creator" content="@christianoliff@mastodon.social" />
+    <link rel="author" href="https://christianoliff.com/" />
+    <link rel="canonical" href="https://coliff.github.io/bootstrap-icons-css/docs/" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="license" href="https://github.com/coliff/bootstrap-icons-css/blob/main/LICENSE" />
 
-  <link rel="canonical" href="https://coliff.github.io/bootstrap-icons-css/docs/" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="license" href="https://github.com/coliff/bootstrap-icons-css/blob/main/LICENSE" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-markup.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-css.min.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-markup.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-css.min.js" defer></script>
-  <script src="script.js" defer></script>
-</head>
-
-<body>
-  <header>
-    <h1>Bootstrap Icons – CSS Variables</h1>
-    <p class="badges">
-      <a href="https://github.com/coliff/bootstrap-icons-css/blob/main/LICENSE" target="_blank"><img src="https://img.shields.io/badge/license-MIT-lightgrey.svg" alt="LICENSE: MIT"  height="20" /></a>
-      <a href="https://www.npmjs.com/package/bootstrap-icons-css" target="_blank"><img src="https://img.shields.io/npm/v/bootstrap-icons-css.svg" alt="npm version" height="20" /></a>
-    </p>
-  </header>
-  <main>
-    <p><strong>
-      A 100% pure CSS icon implementation of <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a> using CSS custom properties and SVG masks.</strong>
-    </p>
-    <ul>
-      <li>No JavaScript, dependencies, SVGs or webfonts needed!</li>
-      <li>Accessible, fast and easy-to-use</li>
-      <li>Includes all 2078 icons</li>
-      <li>Icons can be colored any color by setting a <code>color:</code></li>
-      <li>Icon can be sized any size by setting height and width of the div (the icon scales to fit using
-        <code>mask-size: contain;</code>)
-      </li>
-    </ul>
-
-    <h2 id="how-to-use">How to use</h2>
-    <section class="usage">
-      <ol>
-        <li>Include the stylesheet:</li>
-      </ol>
-      <pre class="example-code"><code class="language-html">&lt;link rel="stylesheet" href="bootstrap-icons.min.css"&gt;</code></pre>
-      <p>
-        Each icon is exposed as a CSS variable
-        <code>--bi-&lt;name&gt;</code> whose value is a
-        <code>url("data:image/svg+xml;utf8,...")</code> data URI.
+  <body>
+    <header>
+      <h1>Bootstrap Icons – CSS Variables</h1>
+      <p class="badges">
+        <a href="https://github.com/coliff/bootstrap-icons-css/blob/main/LICENSE" target="_blank"><img src="https://img.shields.io/badge/license-MIT-lightgrey.svg" alt="LICENSE: MIT" height="20" /></a>
+        <a href="https://www.npmjs.com/package/bootstrap-icons-css" target="_blank"><img src="https://img.shields.io/npm/v/bootstrap-icons-css.svg" alt="npm version" height="20" /></a>
       </p>
+    </header>
+    <main>
+      <p>
+        <strong>
+          A 100% pure CSS icon implementation of
+          <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a> using CSS custom properties and SVG masks.</strong
+        >
+      </p>
+      <ul>
+        <li>No JavaScript, dependencies, SVGs or webfonts needed!</li>
+        <li>Accessible, fast and easy-to-use</li>
+        <li>Includes all 2078 icons</li>
+        <li>Icons can be colored any color by setting a <code>color:</code></li>
+        <li>Icon can be sized any size by setting height and width of the div (the icon scales to fit using <code>mask-size: contain;</code>)</li>
+      </ul>
 
-      <h3>CSS classes</h3>
-      <div class="example-block">
-        <div class="example-demo">
-          <i class="bi bi-0-circle" aria-hidden="true"></i>
-          <i class="bi bi-heart" aria-hidden="true"></i>
-          <i class="bi bi-star-fill" aria-hidden="true" style="color: #ffd700"></i>
-          <i class="bi bi-cpu" aria-hidden="true" style="height: 2rem; width: 2rem"></i>
-        </div>
-        <pre class="example-code"><code class="language-html">&lt;i class="bi bi-0-circle"&gt;&lt;/i&gt;
+      <h2 id="how-to-use">How to use</h2>
+      <section class="usage">
+        <ol>
+          <li>Include the stylesheet:</li>
+        </ol>
+        <pre class="example-code"><code class="language-html">&lt;link rel="stylesheet" href="bootstrap-icons.min.css"&gt;</code></pre>
+        <p>
+          Each icon is exposed as a CSS variable
+          <code>--bi-&lt;name&gt;</code> whose value is a <code>url("data:image/svg+xml;utf8,...")</code> data URI.
+        </p>
+
+        <h3>CSS classes</h3>
+        <div class="example-block">
+          <div class="example-demo">
+            <i class="bi bi-0-circle" aria-hidden="true"></i>
+            <i class="bi bi-heart" aria-hidden="true"></i>
+            <i class="bi bi-star-fill" aria-hidden="true" style="color: #ffd700"></i>
+            <i class="bi bi-cpu" aria-hidden="true" style="height: 2rem; width: 2rem"></i>
+          </div>
+          <pre class="example-code"><code class="language-html">&lt;i class="bi bi-0-circle"&gt;&lt;/i&gt;
  &lt;i class="bi bi-heart"&gt;&lt;/i&gt;
  &lt;i class="bi bi-star-fill" style="color: #ffd700"&gt;&lt;/i&gt;
  &lt;i class="bi bi-cpu" style="height: 2rem; width: 2rem"&gt;&lt;/i&gt;</code></pre>
-      </div>
-      <p>
-        Icons inherit <code>color</code> and default to 1rem. Resize with <code>width</code> and <code>height</code>.
-      </p>
-
-      <h3>As CSS variables anyway you like</h3>
-      <div class="example-block">
-        <div class="example-demo">
-          <span class="icon-sample-bg"></span>
         </div>
-        <pre class="example-code"><code class="language-css">.my-banner {
+        <p>Icons inherit <code>color</code> and default to 1rem. Resize with <code>width</code> and <code>height</code>.</p>
+
+        <h3>As CSS variables anyway you like</h3>
+        <div class="example-block">
+          <div class="example-demo">
+            <span class="icon-sample-bg"></span>
+          </div>
+          <pre class="example-code"><code class="language-css">.my-banner {
   background-color: hotpink;
   display: inline-block;
   height: 3rem;
@@ -97,30 +95,30 @@
   mask-size: 32px 32px;
   width: 640px;
 }</code></pre>
+        </div>
+      </section>
+
+      <div class="alert alert-info" role="note">
+        <strong>Browser compatibility:</strong> <code>mask-image</code> is supported unprefixed in all modern browsers (Chrome 120, Safari 15.4, Firefox 53 — <a href="https://caniuse.com/?search=mask-image">caniuse</a>). To widen support
+        further (Safari 4.0+, Opera), you could use
+        <a href="https://github.com/postcss/autoprefixer" target="_blank">Autoprefixer</a>
+        to automatically add <code>-webkit-mask-image</code> alongside <code>mask-image</code>. Because this uses CSS variables, the same variables are referenced from <code>:root</code> without increasing filesize much. Neat!
       </div>
-    </section>
 
-    <div class="alert alert-info" role="note">
-      <strong>Browser compatibility:</strong> <code>mask-image</code> is supported unprefixed in all modern browsers (Chrome 120, Safari 15.4, Firefox 53 — <a href="https://caniuse.com/?search=mask-image">caniuse</a>).
-      To widen support further (Safari 4.0+, Opera), you could use <a href="https://github.com/postcss/autoprefixer" target="_blank">Autoprefixer</a> to automatically add <code>-webkit-mask-image</code> alongside <code>mask-image</code>. Because this uses CSS variables, the same variables are referenced from <code>:root</code> without increasing filesize much. Neat!
-    </div>
+      <h2 id="icon-gallery">Icon gallery</h2>
+      <p class="count" role="status">Loading…</p>
 
-    <h2 id="icon-gallery">Icon gallery</h2>
-    <p class="count" role="status">Loading…</p>
+      <div class="search-container">
+        <search class="search-wrap">
+          <label for="search">Filter by name:</label>
+          <input type="search" id="search" placeholder="e.g. heart, arrow, user…" minlength="1" aria-label="Filter icons by name" />
+        </search>
+      </div>
+      <div class="grid-container">
+        <div class="grid" id="grid"></div>
+      </div>
+    </main>
 
-    <div class="search-container">
-      <search class="search-wrap">
-        <label for="search">Filter by name:</label>
-        <input type="search" id="search" placeholder="e.g. heart, arrow, user…" minlength="1"
-          aria-label="Filter icons by name" />
-      </search>
-    </div>
-    <div class="grid-container">
-      <div class="grid" id="grid"></div>
-    </div>
-  </main>
-
-  <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
-</body>
-
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+  </body>
 </html>

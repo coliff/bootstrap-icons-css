@@ -19,9 +19,9 @@
     "lint-html": "npx htmlhint **/*.html",
     "lint-js": "npx eslint@8 **/*.mjs --fix",
     "pa11y": "npx pa11y https://coliff.github.io/bootstrap-icons-css/docs/",
-    "prettier": "npx prettier --write \"docs/**/*.{html,css,js}\"",
+    "prettier": "npx prettier --write \"docs/**/*.{css,html,js,svg}\"",
     "serve": "npx serve .",
-    "spellcheck": "npx cspell \"**/*.html\" --no-progress"
+    "spellcheck": "npx cspell \"**/*.html\" \"**/*.md\" \"**/*.mjs\" --no-progress"
   },
   "devDependencies": {
     "clean-css": "5.3.3",

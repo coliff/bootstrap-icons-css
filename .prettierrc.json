@@ -1,9 +1,15 @@
 {
   "overrides": [
     {
+      "files": "*.html",
+      "options": {
+        "printWidth": 240
+      }
+    },
+    {
       "files": "*.svg",
       "options": {
-        "printWidth": 2040,
+        "printWidth": 4096,
         "parser": "html"
       }
     }
