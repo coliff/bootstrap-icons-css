@@ -5,7 +5,7 @@
 
 A 100% pure CSS icon implementation of [Bootstrap Icons](https://icons.getbootstrap.com/) using CSS custom properties and SVG masks.
 
-**Live docs and icon gallery:** [https://coliff.github.io/bootstrap-icons-css/](https://coliff.github.io/bootstrap-icons-css/)
+**Docs and icon gallery:** [https://coliff.github.io/bootstrap-icons-css/docs/](https://coliff.github.io/bootstrap-icons-css/docs/)
 
 - No JavaScript, dependencies, SVGs or webfonts needed!
 - 100% accessible, fast and easy-to-use

@@ -1,7 +1,6 @@
 .cspell.json
 *.min.*
-docs/bootstrap-icons.css
-docs/bootstrap-icons.min.css
+css/
 docs/icon-list.json
-dist/
+
 

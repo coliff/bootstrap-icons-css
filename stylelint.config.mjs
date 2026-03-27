@@ -1,6 +1,6 @@
 /** @type {import('stylelint').Config} */
 const config = {
-  ignoreFiles: ["**/dist/**", "**/*.min.*"],
+  ignoreFiles: ["css/**", "**/*.min.*"],
   rules: {
     "annotation-no-unknown": true,
     "at-rule-descriptor-no-unknown": true,

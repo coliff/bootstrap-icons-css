@@ -2,7 +2,7 @@
 
 /**
  * Build CSS variables for Bootstrap Icons.
- * Downloads twbs/icons archive from GitHub, extracts SVGs from icons/, and generates dist/bootstrap-icons.css
+ * Downloads twbs/icons archive from GitHub, extracts SVGs from icons/, and generates css/bootstrap-icons.css
  */
 
 import https from "node:https";
@@ -17,7 +17,8 @@ import CleanCSS from "clean-css";
 
 const BOOTSTRAP_ICONS_ZIP_URL =
   "https://github.com/twbs/icons/archive/refs/heads/main.zip";
-const DIST_DIR = path.join(process.cwd(), "dist");
+const DOCS_DIR = path.join(process.cwd(), "docs");
+const CSS_DIR = path.join(process.cwd(), "css");
 const TEMP_DIR = path.join(tmpdir(), "bootstrap-icons-css-build");
 const CSS_VAR_PREFIX = "--bi-";
 const PKG_JSON = JSON.parse(
@@ -167,11 +168,10 @@ async function main() {
     }
   }
 
-  fs.mkdirSync(DIST_DIR, { recursive: true });
-  const docsDir = path.join(process.cwd(), "docs");
-  fs.mkdirSync(docsDir, { recursive: true });
+  fs.mkdirSync(CSS_DIR, { recursive: true });
+  fs.mkdirSync(DOCS_DIR, { recursive: true });
 
-  const cssPath = path.join(DIST_DIR, "bootstrap-icons.css");
+  const cssPath = path.join(CSS_DIR, "bootstrap-icons.css");
   const iconNames = [...svgByVarName.keys()].map((k) => k.slice(CSS_VAR_PREFIX.length));
   const classRules = iconNames
     .sort()
@@ -195,9 +195,7 @@ ${classRules}
   fs.writeFileSync(cssPath, cssContent, "utf8");
   console.log(`Wrote ${cssPath} with ${lines.length} icon variables.`);
 
-  fs.copyFileSync(cssPath, path.join(docsDir, "bootstrap-icons.css"));
-
-  const minPath = path.join(DIST_DIR, "bootstrap-icons.min.css");
+  const minPath = path.join(CSS_DIR, "bootstrap-icons.min.css");
   const minifier = new CleanCSS({ level: 2 });
   const minResult = minifier.minify(cssContent);
   if (minResult.errors.length > 0) {
@@ -205,11 +203,9 @@ ${classRules}
   }
   fs.writeFileSync(minPath, minResult.styles, "utf8");
   console.log("Wrote", minPath);
-  fs.copyFileSync(minPath, path.join(docsDir, "bootstrap-icons.min.css"));
-
   const iconList = [...svgByVarName.keys()].map((k) => k.slice(CSS_VAR_PREFIX.length));
   fs.writeFileSync(
-    path.join(docsDir, "icon-list.json"),
+    path.join(DOCS_DIR, "icon-list.json"),
     JSON.stringify(iconList.sort(), null, 0),
     "utf8"
   );
