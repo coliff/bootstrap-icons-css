@@ -17,12 +17,15 @@
     "lint": "npm run lint-html && npm run lint-css && npm run lint-js",
     "lint-css": "npx stylelint \"**/*.css\" --fix",
     "lint-html": "npx htmlhint **/*.html",
-    "lint-js": "npx eslint@8 **/*.mjs --fix",
+    "lint-js": "npx eslint@8 \"**/*.mjs\" \"docs/script.js\" --fix",
     "pa11y": "npx pa11y https://coliff.github.io/bootstrap-icons-css/docs/",
     "prettier": "npx prettier --write \"docs/**/*.{css,html,js,svg}\"",
     "serve": "npx serve .",
     "spellcheck": "npx cspell \"**/*.html\" \"**/*.md\" \"**/*.mjs\" --no-progress"
   },
+  "files": [
+    "css/"
+  ],
   "devDependencies": {
     "clean-css": "5.3.3",
     "sharp": "0.34.5",
