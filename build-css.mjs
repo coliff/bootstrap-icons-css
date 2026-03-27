@@ -81,8 +81,11 @@ function openZip(buffer) {
   return new Promise((resolve, reject) => {
     const opt = { lazyEntries: true };
     yauzl.fromBuffer(buffer, opt, (err, zipfile) => {
-      if (err) reject(err);
-      else resolve(zipfile);
+      if (err) {
+        reject(err);
+      } else {
+        resolve(zipfile);
+      }
     });
   });
 }
@@ -199,7 +202,7 @@ ${classRules}
   const minifier = new CleanCSS({ level: 2 });
   const minResult = minifier.minify(cssContent);
   if (minResult.errors.length > 0) {
-    throw new Error("CleanCSS: " + minResult.errors.join("; "));
+    throw new Error(`CleanCSS: ${minResult.errors.join("; ")}`);
   }
   fs.writeFileSync(minPath, minResult.styles, "utf8");
   console.log("Wrote", minPath);

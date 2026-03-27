@@ -1,7 +1,7 @@
 {
   "root": true,
   "env": {
-    "es6": true,
+    "es2022": true,
     "node": true
   },
   "extends": ["eslint:recommended"],
@@ -11,6 +11,23 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-undef": "off"
+    "curly": ["error", "all"],
+    "dot-notation": "error",
+    "eqeqeq": ["error", "always", { "null": "ignore" }],
+    "no-throw-literal": "error",
+    "no-undef": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "caughtErrors": "none",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "no-var": "error",
+    "object-shorthand": "error",
+    "prefer-const": ["error", { "ignoreReadBeforeAssign": true }],
+    "prefer-template": "error",
+    "radix": "error"
   }
 }
