@@ -27,9 +27,13 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Run Super-Linter
         uses: super-linter/super-linter@61abc07d755095a68f4987d1c2c3d1d64408f1f9 # v8.5.0
         env:
+          CSS_FILE_NAME: stylelint.config.mjs
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: ./
           LOG_LEVEL: NOTICE
