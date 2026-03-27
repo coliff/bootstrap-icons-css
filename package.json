@@ -1,7 +1,6 @@
 {
   "name": "bootstrap-icons-css",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.13.1",
   "description": "CSS variables for Bootstrap Icons",
   "homepage": "https://github.com/coliff/bootstrap-icons-css#readme",
   "bugs": {
@@ -28,10 +27,9 @@
     "clean-css": "5.3.3",
     "sharp": "0.33.5",
     "svgo": "4.0.1",
-    "to-ico": "1.1.5",
     "yauzl": "3.2.0"
   },
   "volta": {
-    "node": "24.10.0"
+    "node": "24.14.1"
   }
 }

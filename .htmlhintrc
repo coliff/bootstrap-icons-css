@@ -2,6 +2,7 @@
   "alt-require": true,
   "attr-lowercase": true,
   "attr-no-duplication": true,
+  "attr-no-unnecessary-whitespace": true,
   "attr-value-double-quotes": true,
   "attr-value-no-duplication": true,
   "button-type-require": true,
@@ -18,10 +19,12 @@
   "meta-charset-require": true,
   "meta-description-require": true,
   "meta-viewport-require": true,
+  "space-tab-mixed-disabled": "space",
   "spec-char-escape": true,
   "src-not-empty": true,
   "tag-no-obsolete": true,
   "tag-pair": true,
+  "tag-self-close": true,
   "tagname-lowercase": true,
   "title-require": true
 }

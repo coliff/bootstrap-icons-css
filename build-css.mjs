@@ -20,6 +20,10 @@ const BOOTSTRAP_ICONS_ZIP_URL =
 const DIST_DIR = path.join(process.cwd(), "dist");
 const TEMP_DIR = path.join(tmpdir(), "bootstrap-icons-css-build");
 const CSS_VAR_PREFIX = "--bi-";
+const PKG_JSON = JSON.parse(
+  fs.readFileSync(new URL("./package.json", import.meta.url), "utf8")
+);
+const BANNER = `/*! bootstrap-icons-css v${PKG_JSON.version} | MIT License | https://github.com/coliff/bootstrap-icons-css */`;
 
 function download(url) {
   return new Promise((resolve, reject) => {
@@ -187,7 +191,7 @@ async function main() {
 
 ${classRules}
 `;
-  const cssContent = ":root {\n" + lines.join("\n") + "\n}\n" + utilityCss;
+  const cssContent = `${BANNER}\n\n:root {\n${lines.join("\n")}\n}\n${utilityCss}`;
   fs.writeFileSync(cssPath, cssContent, "utf8");
   console.log(`Wrote ${cssPath} with ${lines.length} icon variables.`);
 

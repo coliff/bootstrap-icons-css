@@ -5,6 +5,7 @@
     "node": true
   },
   "extends": ["eslint:recommended"],
+  "ignorePatterns": ["**/*.min.*"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
