@@ -2,7 +2,7 @@
   "name": "bootstrap-icons-css",
   "version": "1.13.1",
   "description": "CSS variables for Bootstrap Icons",
-  "homepage": "https://github.com/coliff/bootstrap-icons-css#readme",
+  "homepage": "https://coliff.github.io/bootstrap-icons-css/docs/",
   "bugs": {
     "url": "https://github.com/coliff/bootstrap-icons-css/issues"
   },
@@ -18,16 +18,16 @@
     "lint-css": "npx stylelint \"**/*.css\" --fix",
     "lint-html": "npx htmlhint **/*.html",
     "lint-js": "npx eslint@8 **/*.mjs --fix",
-    "pa11y": "npx pa11y https://coliff.github.io/bootstrap-icons-css/",
+    "pa11y": "npx pa11y https://coliff.github.io/bootstrap-icons-css/docs/",
     "prettier": "npx prettier --write \"docs/**/*.{html,css,js}\"",
-    "serve": "npx serve docs",
+    "serve": "npx serve .",
     "spellcheck": "npx cspell \"**/*.html\" --no-progress"
   },
   "devDependencies": {
     "clean-css": "5.3.3",
-    "sharp": "0.33.5",
+    "sharp": "0.34.5",
     "svgo": "4.0.1",
-    "yauzl": "3.2.0"
+    "yauzl": "3.2.1"
   },
   "volta": {
     "node": "24.14.1"

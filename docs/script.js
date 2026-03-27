@@ -87,8 +87,7 @@
     );
   });
 
-  const docDir = location.pathname.replace(/\/[^/]*$/, "/") || "/";
-  fetch(docDir + "icon-list.json")
+  fetch(new URL("icon-list.json", location.href))
     .then((r) => r.json())
     .then((names) => {
       allNames = names;

@@ -5,6 +5,7 @@ on:
   release:
     types:
       - published
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -18,13 +19,10 @@ jobs:
   publish:
     name: Publish to npm
     runs-on: ubuntu-latest
-    if: ${{ github.actor != 'dependabot[bot]' }}
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
@@ -32,17 +30,8 @@ jobs:
           node-version-file: .nvmrc
           registry-url: "https://registry.npmjs.org"
 
-      - name: Fail if package is private
-        run: |
-          if node -e "const p=require('./package.json'); process.exit(p.private ? 1 : 0)"; then
-            echo "Package is publishable (private is false or missing)"
-          else
-            echo "::error::Set \"private\": false in package.json to publish to npm."
-            exit 1
-          fi
-
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build
         run: npm run build
