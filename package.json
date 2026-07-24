@@ -29,7 +29,7 @@
   "devDependencies": {
     "clean-css": "5.3.3",
     "sharp": "0.34.5",
-    "svgo": "4.0.1",
+    "svgo": "4.0.2",
     "yauzl": "3.3.1"
   },
   "volta": {
