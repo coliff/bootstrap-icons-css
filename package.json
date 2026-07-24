@@ -28,9 +28,9 @@
   ],
   "devDependencies": {
     "clean-css": "5.3.3",
-    "sharp": "0.34.5",
+    "sharp": "0.35.3",
     "svgo": "4.0.2",
-    "yauzl": "3.3.1"
+    "yauzl": "3.4.0"
   },
   "volta": {
     "node": "24.14.1"
