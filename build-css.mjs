@@ -26,18 +26,33 @@ const PKG_JSON = JSON.parse(
 );
 const BANNER = `/*! bootstrap-icons-css v${PKG_JSON.version} | MIT License | https://github.com/coliff/bootstrap-icons-css */`;
 
-function download(url) {
+const REDIRECT_CODES = new Set([301, 302, 303, 307, 308]);
+const MAX_REDIRECTS = 5;
+
+function download(url, redirectsLeft = MAX_REDIRECTS) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
-      if (res.statusCode === 302 || res.statusCode === 301) {
-        return download(res.headers.location).then(resolve).catch(reject);
-      }
-      if (res.statusCode !== 200) {
-        reject(new Error(`Download failed: ${res.statusCode} ${res.statusMessage}`));
-        return;
-      }
-      resolve(res);
-    }).on("error", reject);
+    https
+      .get(url, (res) => {
+        if (REDIRECT_CODES.has(res.statusCode) && res.headers.location) {
+          // Drain the redirect response so the socket is released.
+          res.resume();
+          if (redirectsLeft <= 0) {
+            reject(new Error(`Download failed: too many redirects for ${url}`));
+            return;
+          }
+          // Location may be relative, so resolve it against the current URL.
+          const nextUrl = new URL(res.headers.location, url).toString();
+          download(nextUrl, redirectsLeft - 1).then(resolve, reject);
+          return;
+        }
+        if (res.statusCode !== 200) {
+          res.resume();
+          reject(new Error(`Download failed: ${res.statusCode} ${res.statusMessage}`));
+          return;
+        }
+        resolve(res);
+      })
+      .on("error", reject);
   });
 }
 
@@ -156,10 +171,19 @@ async function main() {
   const res = await download(BOOTSTRAP_ICONS_ZIP_URL);
   const zipPath = path.join(TEMP_DIR, "bootstrap-icons.zip");
   fs.mkdirSync(TEMP_DIR, { recursive: true });
-  await pipeline(res, createWriteStream(zipPath));
-  console.log("Extracting and building CSS variables...");
+  let svgByVarName;
+  try {
+    await pipeline(res, createWriteStream(zipPath));
+    console.log("Extracting and building CSS variables...");
+    svgByVarName = await extractSvgsFromZip(zipPath);
+  } finally {
+    // Always remove the temp archive, even if the download or extraction fails.
+    fs.rmSync(TEMP_DIR, { recursive: true, force: true });
+  }
 
-  const svgByVarName = await extractSvgsFromZip(zipPath);
+  if (svgByVarName.size === 0) {
+    throw new Error("No icons found in the downloaded archive.");
+  }
 
   const lines = [];
   for (const [varName, svg] of svgByVarName) {
@@ -212,13 +236,6 @@ ${classRules}
     JSON.stringify(iconList.sort(), null, 0),
     "utf8"
   );
-
-  try {
-    fs.unlinkSync(zipPath);
-    fs.rmdirSync(TEMP_DIR);
-  } catch {
-    // ignore
-  }
 }
 
 main().catch((err) => {

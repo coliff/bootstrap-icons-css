@@ -139,7 +139,11 @@
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
     const next = isDark ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
+    try {
+      localStorage.setItem("theme", next);
+    } catch {
+      // Storage may be unavailable (e.g. private mode); the toggle still works for this page view.
+    }
     const prismDarkClick = document.getElementById("prism-dark");
     if (prismDarkClick) {
       prismDarkClick.media = next === "dark" ? "all" : "none";
